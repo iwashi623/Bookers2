@@ -1,0 +1,37 @@
+<div class="container">
+  <% if flash[:notice] %>
+    <div class="">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <%= render "shared/error_messages", resource: @book %>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render "shared/user_info" %>
+      <%= render "shared/new_book_form", book: @book %>
+    </div>
+    <div class="col-xs-9">
+      <h2>Book detail</h2>
+      <table>
+        <tr>
+          <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= link_to @book.user.name, user_path(@book.user) %>
+        </tr>
+        <tr>
+          <%= @book.title %>
+        </tr>
+        <tr>
+          <%= @book.body %>
+        </tr>
+        <% if @book.user == current_user %>
+          <tr>
+            <%= link_to "Edit", edit_book_path(@book) %>
+          </tr>
+          <tr>
+            <%= link_to "Destroy", book_path(@book), method: :delete %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
