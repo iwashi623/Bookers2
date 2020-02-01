@@ -1,14 +1,13 @@
-
   <h2>New book</h2>
   <div>
     <%= form_for :book,:url => {controller: "books", action: "create"}, class: "new_book" do |f| %>
       <div class="field row">
         <%= f.label :title %><br>
-        <%= f.text_field :title, class: "col-xs-12 book_title" %>
+        <%= f.text_field :title, class: "col-xs-12 book_title", value: nil %>
       </div>
       <div class="field row">
         <%= f.label :body %><br>
-        <%= f.text_field :body, class: "col-xs-12 book_body" %>
+        <%= f.text_field :body, class: "col-xs-12 book_body", value: nil %>
       </div>
       <div class="">
         <%= f.submit "Create Book", method: :post, class: "btn btn-primary col-xs-12"  %>

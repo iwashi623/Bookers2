@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'static_pages/home'
-  get 'static_pages/about', as: 'home/about'
+  get 'home/about', to: 'static_pages#about' ,as: 'home/about'
   devise_for :users, controllers: {
         sessions:      'users/sessions',
         passwords:     'users/passwords',
